@@ -151,9 +151,9 @@ package {
 			
 			addChild(s);
 			
-//			EasyDebugUI.disposeByTarget(s);
-//			EasyDebugUI.disposeByComponent(c2)
-//			EasyDebugUI.dispose();
+//			BinderUI.disposeByTarget(s);
+//			BinderUI.disposeByComponent(lineChartX)
+//			BinderUI.dispose();
 		}
 
 		private function addInfo():void {
