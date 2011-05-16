@@ -89,3 +89,76 @@ BinderUI.dispose();
 
 h2. Time (com.soundstep.utils.Time)
 
+Time is a simple class to delay call to functions with pause and resume, auto-destruct and easy dispose without creating references if not needed.
+
+The goal was to have something small, simple and quick to use.
+
+Call a method after 1 sec, the timer  auto-destruct itself after calling the callback.
+
+<pre><code>
+Time.call(validateCall, 1000);
+</pre></code>
+
+Retrieve an id.
+
+<pre><code>
+var id:String = Time.call(validateCall, 1000);
+</pre></code>
+
+Retain the timer.
+
+<pre><code>
+Time.call(validateCall, 1000, false);
+</pre></code>
+
+Pass arguments.
+
+<pre><code>
+Time.call(validateCall, 1000, true, {data:"data"});
+</pre></code>
+
+Retrieve a timer object.
+
+<pre><code>
+var id:String = Time.call(validateCall, 1000);
+var object:Object = Time.getTimerObjectByID(id);
+</pre></code>
+
+Print a timer object (this will describe what kind of properties are in this object).
+
+<pre><code>
+Time.print(id)
+</pre></code>
+
+Get the current time.
+
+<pre><code>
+Time.getTime(id)
+</pre></code>
+
+Pause and resume.
+
+<pre><code>
+Time.pause(id);
+Time.resume(id)
+</pre></code>
+
+Destroy a timer with an id.
+
+<pre><code>
+Time.disposeByID(id)
+</pre></code>
+
+Destroy all timers from a function.
+
+<pre><code>
+Time.call(validateCall, 1000);
+Time.call(validateCall, 1500);
+Time.disposeByFunction(validateCall);
+</pre></code>
+
+Dispose everything (be careful: static class, can be used by others).
+
+<pre><code>
+Time.dispose();
+</pre></code>
