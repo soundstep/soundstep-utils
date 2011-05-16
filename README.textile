@@ -15,36 +15,35 @@ That means that the bound values will update the components in real-time and the
 
 As a quick example, imagine you have a custom darkness property on your custom class, you can bind the value this way:
 
-```as3
+<pre><code>
 BinderUI.displaySliderHorizontal(this, _mySprite, "darkness", "darkness", null, 0.1, 1, -255, 255);
-```
+</pre></code>
 
 This will create a slider that will update (and be updated) for your darkness property.
 
 Note: you'll need to add a [Bindable] metadata in your class:
 
-```as3
+<pre><code>
 [Bindable]
 public class MySprite extends Sprite {
-```
+</pre></code>
 
 Note: in case you want to debug built-in flash properties (such as x and y), you'll need to override the properties in your custom class even if it does nothing.
 
-```as3
+<pre><code>
 override public function get x():Number {
 	return super.x;
 }
-
 override public function set x(value:Number):void {
 	super.x = value;
 }
-```
+</pre></code>
 
 For now you can debug only properties (getters and setters), and types that are String, Number, Boolean (and color).
 
-Here is a list of component that can be used:
+Here is a list of component that can be used.
 
-```as3
+<pre><code>
 BinderUI.displayLabel(this, s, "x")
 BinderUI.displayColorChooser(this, sprite, "color", 0xFFFF00);
 BinderUI.displayCheckBox(this, sprite, "halfTransparent", "half transparent");
@@ -56,37 +55,37 @@ BinderUI.displaySliderVertical(this, sprite, "x", "x", null, 0.1, 1, 0, 900);
 BinderUI.displayTextarea(this, sprite, "x");
 BinderUI.displayKnob(this, sprite, "x", "x", null, Knob.VERTICAL, 20, 0, 900);
 BinderUI.displayMeter(this, sprite, "x", "x", null, 0, 900);
-```
+</pre></code>
 
 Note: in some case, it is harder to bind values, such as when you want to update a component from what you type in a textfield. You'll need to dispatch an event yourself (usually these events are added by the compiler with the Bindable metadata tag).
 
-```as3
+<pre><code>
 dispatchEvent(new PropertyChangeEvent(PropertyChangeEvent.PROPERTY_CHANGE, false, false, PropertyChangeEventKind.UPDATE, 'text', oldValue, newValue, this));
-```
+</pre></code>
 
 About colors, you can use the displayColorChooser method. The easiest is using a "color" property for example.
 
-```as3
+<pre><code>
 BinderUI.displayColorChooser(this, mySprite, "color");
-```
+</pre></code>
 
 You can also use the colorTransform property but this property is not bindable, so it will work only in one way (component --> target):
 
-```as3
+<pre><code>
 BinderUI.displayColorChooser(this, mySprite.transform, "color");
-```
+</pre></code>
 
 You can also use the MinimalConfigurator to create your interface from an XML file.
 
-* "MinimalComps":http://www.minimalcomps.com/?page_id=14
+* "MinimalConfigurator":http://www.minimalcomps.com/?page_id=14
 
 Three methods are available to dispose (remove and destroy) components. You can dispose by target, by component or dispose everything.
 
-```as3
+<pre><code>
 BinderUI.disposeByTarget(mySprite);
 BinderUI.disposeByComponent(myComponent)
 BinderUI.dispose();
-```
+</pre></code>
 
 h2. Time (com.soundstep.utils.Time)
 
